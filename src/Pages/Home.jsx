@@ -25,7 +25,7 @@ const Home = () => {
             <div
               className="user"
               key={user.id}
-              onClick={() => useNavigate(`${user.id}`)}
+              onClick={() => navigate(`${user.id}`)}
             >
               <div className="user-card">
                 <div className="user-card__container">
