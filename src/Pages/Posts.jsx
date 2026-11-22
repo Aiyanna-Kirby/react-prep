@@ -9,7 +9,7 @@ const Posts = () => {
   const [searchId, setSearchId] = useState(id);
 
   function onSearch() {
-    fetchPosts(userId);
+    fetchPosts(searchId);
   }
 
   async function fetchPosts(userId) {
@@ -18,6 +18,12 @@ const Posts = () => {
     );
     setPosts(data);
     setLoading(false);
+  }
+
+  function onSearchKeyPress(key) {
+    if (key === 'Enter') {
+      onSearch();
+    }
   }
 
   useEffect(() => {
@@ -35,6 +41,7 @@ const Posts = () => {
               type="number"
               value={searchId}
               onChange={(event) => setSearchId(event.target.value)}
+              onKeyPress={(event) => onSearchKeyPress(event.key)}
             />
             <button onClick={() => onSearch()}>Enter</button>
           </div>
